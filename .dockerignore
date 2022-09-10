@@ -1,0 +1,16 @@
+.git
+.gitignore
+.idea
+.dockerignore
+.github
+README.*
+LICENSE
+_test
+_out
+apiserver.local.config
+deploy
+main_test.go
+testdata
+*.yaml
+Dockerfile
+charts
