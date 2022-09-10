@@ -1,0 +1,6 @@
+{
+  "apiKeySecretRef": {
+    "name": "njalla-credentials",
+    "key": "token"
+  }
+}
