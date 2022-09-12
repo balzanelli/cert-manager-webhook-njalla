@@ -36,3 +36,25 @@ jobs:
           tags: ${{ steps.docker-metadata.outputs.tags }}
           labels: ${{ steps.docker-metadata.outputs.labels }}
 
+  helm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.8.1
+
+      - name: Release Helm Chart
+        uses: helm/chart-releaser-action@v1.4.0
+        with:
+          charts_dir: deploy
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
